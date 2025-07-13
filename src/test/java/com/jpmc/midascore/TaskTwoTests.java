@@ -25,6 +25,7 @@ class TaskTwoTests {
         String[] transactionLines = fileLoader.loadStrings("/test_data/poiuytrewq.uiop");
         for (String transactionLine : transactionLines) {
             kafkaProducer.send(transactionLine);
+            logger.info("Send");
         }
         Thread.sleep(2000);
         logger.info("----------------------------------------------------------");
@@ -37,5 +38,4 @@ class TaskTwoTests {
             logger.info("...");
         }
     }
-
 }

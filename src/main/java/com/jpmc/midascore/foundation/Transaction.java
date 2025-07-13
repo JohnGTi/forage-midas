@@ -3,18 +3,29 @@ package com.jpmc.midascore.foundation;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class Transaction {
+public class Transaction
+{
     private long senderId;
     private long recipientId;
     private float amount;
 
+    /**
+     * Midas's frontend Incentive API may reward the transaction recipient with some bonus amount.
+     */
+    private float incentive = 0f;
+
     public Transaction() {
     }
 
-    public Transaction(long senderId, long recipientId, float amount) {
+    public Transaction(long senderId, long recipientId, float amount, float incentive) {
         this.senderId = senderId;
         this.recipientId = recipientId;
         this.amount = amount;
+        this.incentive = incentive;
+    }
+
+    public Transaction(long senderId, long recipientId, float amount) {
+        this(senderId, recipientId, amount, 0f);
     }
 
     public long getSenderId() {
@@ -41,8 +52,17 @@ public class Transaction {
         this.amount = amount;
     }
 
+    public float getIncentive() {
+        return incentive;
+    }
+
+    public void setIncentive(float amount) {
+        this.incentive = amount;
+    }
+
     @Override
     public String toString() {
-        return "Transaction {senderId=" + senderId + ", recipientId=" + recipientId + ", amount=" + amount + "}";
+        return "Transaction {senderId=" + senderId + ", recipientId=" + recipientId + ", amount=" + amount +
+                ", incentive=" + incentive + "}";
     }
 }

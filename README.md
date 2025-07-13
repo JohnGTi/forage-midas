@@ -1,2 +1,3 @@
 # Midas
-Project repo for the JPMC Advanced Software Engineering Forage program
+### Gabriel Tierney
+Completed attempt of the JPMC Advanced SE Forage Program.
